@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!--wrap_content =  se ajusta al tamaño del contenido
+     layout = etructura gráfica que representa la interfaz del usuario, cada
+     bloque gráfico (botones, texto) es una estructura layout distinta-->
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/titulo"
+        android:textSize="36dp"
+        />
+
+    <TextView
+        android:id="@+id/cuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titulo"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/cuenta"
+        android:textSize="84dp"
+        />
+
+
+    <!--Se crea un linear layout que es el espacio gráfico que alberga los botones
+    gravity hace que el contenido tienda a organizarse conforme se le ha indicado (en este caso es de manera horizontal), para
+    lograr esto se aplica un peso a cada uno de los elementos dentro del layout por el cual se organizan, lo que garantiza
+    que queden equespaciados-->
+
+    <LinearLayout
+        android:id="@+id/botones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:weightSum="0"
+        >
+
+
+        <Button
+            android:id="@+id/incrementar"
+            android:layout_width="84dp"
+            android:layout_height="wrap_content"
+            android:text="@string/incrementar"
+            android:textSize="60dp"
+            android:onClick="incrementar"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="0.33"/>
+
+        <Button
+            android:id="@+id/decrementar"
+            android:layout_width="84dp"
+            android:layout_height="wrap_content"
+            android:onClick="decrementar"
+            android:text="@string/decrementar"
+            android:textSize="60dp" />
+
+    </LinearLayout>
+
+
+    <!-- los dp son unidades de medida espacial en pixeles, similares a los sp pero los sp cambian cuando se configura el tamaño
+    de letra en el celular-->
+    <LinearLayout
+        android:id="@+id/resets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/botones"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="24sp"
+            android:onClick="reset"
+            android:text="@string/reset"
+            android:textSize="12sp"/>
+        <!--hint es el texto sugerencia que desaparece por defecto al seleccionar la caja Edit text
+        puede usarse también text="0" lo que hace que el texto por defecto sea 0 en la cada de edit Text, sin embargo toca
+        borrar el 0 antes de escribir si se usa Text-->
+        <!--android:inputType="numberSigned" Solo permite que se intruduzcan números con signo en la caja-->
+        <EditText
+            android:id="@+id/set"
+            android:layout_width="72sp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:hint="0"
+            android:textSize="24sp"
+            android:inputType="numberSigned"
+            android:cursorVisible="false"/>
+
+
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/negativos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Permitir cuenta negativa"
+        android:textSize="12sp"
+        />
+
+</RelativeLayout>
